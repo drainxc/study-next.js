@@ -11,6 +11,7 @@ export default function ItemList({ item }: any) {
             <Grid.Column key={index}>
               <Link href={`/view/${list.id}`}>
                 <a>
+                  {/* eslint-disable-next-line jsx-a11y/alt-text */}
                   <Image src={list.image_link} />
                   <div>{list.name}</div>
                   <div>

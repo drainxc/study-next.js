@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ItemList from "../src/components/List";
+import ItemList from "../src/components/list";
 
 const Home: NextPage = () => {
   const [data, setData] = useState<any>([]);
