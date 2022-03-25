@@ -42,6 +42,7 @@ export default function About() {
 
   return (
     <>
+      <Item.Group items={items} />
     </>
   );
 }
