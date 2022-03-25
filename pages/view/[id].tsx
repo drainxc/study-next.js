@@ -42,7 +42,13 @@ export default function About() {
 
   return (
     <>
-      <Item.Group items={items} />
+      {loading ? (
+        <Dimmer active inverted>
+          <Loader inverted>Loading</Loader>
+        </Dimmer>
+      ) : (
+        <Item.Group items={items} />
+      )}
     </>
   );
 }
