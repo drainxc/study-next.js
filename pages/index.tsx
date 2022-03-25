@@ -4,17 +4,17 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ItemList from "../src/components/list";
+import { BASE_URL } from "../src/lib/export/data";
 
 const Home: NextPage = () => {
   const [data, setData] = useState<any>([]);
 
-  const API_URL: string =
-    "http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline";
-
   async function getData() {
-    await axios.get(API_URL).then((res) => {
-      setData(res.data);
-    });
+    await axios
+      .get(BASE_URL + "api/v1/products.json?brand=maybelline")
+      .then((res) => {
+        setData(res.data);
+      });
   }
   useEffect(() => {
     getData();
