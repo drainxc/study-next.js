@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { Dimmer, Loader, Item } from "semantic-ui-react";
+import { Dimmer, Loader, Item, Button, Icon } from "semantic-ui-react";
 import { BASE_URL } from "../../src/lib/export/data";
 
 export default function About() {
@@ -16,6 +16,7 @@ export default function About() {
       description: "",
       meta: "",
       extra: "",
+      link: "",
     },
   ]);
 
@@ -33,6 +34,7 @@ export default function About() {
           description: res.data.description,
           meta: res.data.brand,
           extra: "$" + res.data.price,
+          link: res.data.product_link,
         },
       ]);
     })
@@ -47,7 +49,21 @@ export default function About() {
           <Loader inverted>Loading</Loader>
         </Dimmer>
       ) : (
-        <Item.Group items={items} />
+        <>
+          <Item.Group items={items} />
+          <Button animated="vertical">
+            <Button.Content hidden href={items[0].link}>
+              Shop
+            </Button.Content>
+            <Button.Content visible>
+              <Icon name="shop" />
+            </Button.Content>
+          </Button>
+          <Button animated="fade">
+            <Button.Content visible>buy the product</Button.Content>
+            <Button.Content hidden>{items[0].extra}</Button.Content>
+          </Button>
+        </>
       )}
     </>
   );
