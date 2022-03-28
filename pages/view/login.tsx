@@ -7,12 +7,14 @@ export default function Login() {
       googleId,
       profileObj: { email, name, imageUrl },
     } = res;
+
+    console.log(res);
   };
 
   const onFailure = (err: any) => {
     console.log(err);
   };
-  
+
   return (
     <>
       <GoogleLogin
@@ -20,8 +22,8 @@ export default function Login() {
         onSuccess={onSuccess}
         onFailure={onFailure}
         render={(_renderProps) => <div></div>}
-        redirectUri="http://localhost:3000/view/login"
         autoLoad={true}
+        // redirectUri="http://localhost:3000/view/login"
       ></GoogleLogin>
     </>
   );
