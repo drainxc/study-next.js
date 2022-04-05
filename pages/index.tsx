@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import ItemList from "../src/components/list";
 import { BASE_URL } from "../src/lib/export/data";
 import { Dimmer, Loader, Button, Icon } from "semantic-ui-react";
+import * as S from "./styles";
 
 const Home: NextPage = () => {
-  const [data, setData] = useState<any>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<object>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   console.log(data);
 
   async function getData() {
@@ -20,6 +21,7 @@ const Home: NextPage = () => {
         setLoading(false);
       });
   }
+
   useEffect(() => {
     getData();
   }, []);
@@ -32,9 +34,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Button color="google plus">
-        <Icon name="google plus" /> Google Plus
-      </Button>
+      <S.LoginButton>
+        <Button color="google plus">
+          <Icon name="google" /> Google
+        </Button>
+      </S.LoginButton>
 
       {loading ? (
         <Dimmer active inverted>

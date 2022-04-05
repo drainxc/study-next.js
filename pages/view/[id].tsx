@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dimmer, Loader, Item, Button, Icon } from "semantic-ui-react";
 import { BASE_URL } from "../../src/lib/export/data";
 
-export default function About() {
+export default function About({ item }: any) {
   const router = useRouter();
   const { id } = router.query;
   const [loading, setLoading] = useState<boolean>(true);
@@ -67,4 +67,17 @@ export default function About() {
       )}
     </>
   );
+}
+
+export async function getServerSideProps(context: any) {
+  const id = context.params.id;
+  const apiURL = BASE_URL + `api/v1/products/${id}.json`;
+  const res = await axios.get(apiURL);
+  const data = res.data;
+
+  return {
+    props: {
+      item: data,
+    },
+  };
 }
