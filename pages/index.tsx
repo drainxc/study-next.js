@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import ItemList from "../src/components/list";
 import { BASE_URL } from "../src/lib/export/data";
 import { Dimmer, Loader, Button, Icon } from "semantic-ui-react";
+import Link from "next/link";
 import * as S from "./styles";
 
 const Home: NextPage = () => {
@@ -34,11 +35,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <S.LoginButton>
-        <Button color="google plus">
-          <Icon name="google" /> Google
-        </Button>
-      </S.LoginButton>
+      {/* eslint-disable-next-line @next/next/link-passhref */}
+      <Link href={"/view/login"}>
+        <S.LoginButton>
+          <Button color="google plus">
+            <Icon name="google" /> Google
+          </Button>
+        </S.LoginButton>
+      </Link>
 
       {loading ? (
         <Dimmer active inverted>
